@@ -1,12 +1,12 @@
 import express from 'express';
 import {login} from '../controller/loginControllers.js'
 import {getAll} from '../controller/getRhkController.js'
-import submitController from '../controller/submitControllers.js';
+import submitData from '../controller/submitControllers.js';
 import {resultGet} from '../controller/getrkControllers.js';
 const router = express.Router();
 
 
-router.post('/submit',submitController.submitData)
+router.post('/submit',submitData.submitData)
 
 router.post('/login',(req,res)=>{
    login(req,res);

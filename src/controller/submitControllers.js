@@ -1,30 +1,24 @@
 import submitModel from '../models/submitModels.js';
 
 const submitData = async (req, res) => {
-    const { userId, rhk, rk, totalPoint } = req.body;
+    const dataArray = req.body;
 
     // Validasi input
-    if (!userId || !rhk || !rk || !totalPoint) {
+    if (!Array.isArray(dataArray) || dataArray.length === 0) {
         return res.status(400).json({
             status: 'failed',
-            message: 'Semua field harus diisi'
+            message: 'Data harus berupa array dan tidak boleh kosong'
         });
     }
 
     try {
         // Simpan data ke database
-        const newDataId = await submitModel.submitData(userId, rhk, rk, totalPoint);
+        const results = await submitModel.submitData(dataArray);
 
         res.json({
             status: 'success',
             message: 'Data berhasil disimpan',
-            data: {
-                id: newDataId,
-                userId,
-                rhk,
-                rk,
-                totalPoint
-            }
+            data: results
         });
     } catch (error) {
         console.error('Submit error:', error);
