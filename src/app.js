@@ -1,9 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-// Import routes
-const kegiatanRoutes = require('./routes/kegiatanRoutes');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import kegiatanRoutes from './routes/routes.js';
 
 // Inisialisasi app
 const app = express();
